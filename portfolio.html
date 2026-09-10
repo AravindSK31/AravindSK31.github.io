@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aravind Kattepur — Software Engineer</title>
+<meta name="description" content="Aravind Kattepur — Software engineering, cloud, and data systems. MS Data Science candidate at Northeastern University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0D12;
+    --bg-raised: #12151C;
+    --bg-card: #14181F;
+    --text: #ECEEF0;
+    --text-soft: #8D96A3;
+    --line: rgba(236,238,240,0.10);
+    --accent-a: #67E8F9;
+    --accent-b: #A78BFA;
+    --status: #E8A94D;
+    --status-bg: rgba(232,169,77,0.13);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-a); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent-a);
+    outline-offset: 3px;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Hero ---------- */
+
+  header.hero {
+    position: relative;
+    background: var(--bg);
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.55;
+  }
+
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 620px 420px at 78% 8%, rgba(103,232,249,0.10), transparent 62%),
+      radial-gradient(ellipse 500px 500px at 6% 90%, rgba(167,139,250,0.08), transparent 65%),
+      linear-gradient(180deg, rgba(11,13,18,0.2) 0%, rgba(11,13,18,0.85) 92%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    padding: 92px 0 46px;
+  }
+
+  .hero-reveal { animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero-reveal:nth-child(1) { animation-delay: 0s; }
+  .hero-reveal:nth-child(2) { animation-delay: 0.1s; }
+  .hero-reveal:nth-child(3) { animation-delay: 0.2s; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reveal { animation: none; }
+  }
+
+  .name-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+
+  .monogram {
+    flex-shrink: 0;
+    width: 42px; height: 42px;
+    border-radius: 9px;
+    background: rgba(236,238,240,0.06);
+    border: 1px solid rgba(236,238,240,0.16);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.3rem, 6vw, 3.3rem);
+    line-height: 1.05;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: #F4F6F8;
+  }
+
+  .hero .role {
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    margin: 0 0 30px;
+    max-width: 46ch;
+    min-height: 1.7em;
+  }
+
+  .role .caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    background: var(--accent-a);
+    margin-left: 2px;
+    vertical-align: -0.15em;
+    animation: blink 0.9s step-end infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .role .caret { animation: none; } }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .status-line {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--status-bg);
+    color: var(--status);
+    border: 1px solid rgba(232,169,77,0.3);
+    padding: 7px 14px 7px 12px;
+    border-radius: 100px;
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--status);
+    position: relative; flex-shrink: 0;
+  }
+  .status-dot::after {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    background: var(--status);
+    opacity: 0.35;
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { transform: scale(0.6); opacity: 0.45; }
+    70%  { transform: scale(2.1); opacity: 0; }
+    100% { transform: scale(2.1); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .status-dot::after { animation: none; display: none; } }
+
+  /* ---------- Ambient ticker ---------- */
+
+  .ticker-wrap {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-raised);
+    overflow: hidden;
+    padding: 10px 0;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    opacity: 0.55;
+    animation: scroll-left 32s linear infinite;
+  }
+  .ticker-track span { white-space: nowrap; }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; flex-wrap: wrap; }
+  }
+
+  /* ---------- Nav ---------- */
+
+  nav.subnav {
+    position: sticky; top: 0;
+    background: rgba(11,13,18,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10;
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+    display: flex; gap: 26px;
+    font-size: 0.94rem;
+  }
+  nav.subnav a { color: var(--text); font-weight: 500; margin-right: 26px; }
+  nav.subnav a:last-child { margin-right: 0; }
+  nav.subnav a:hover { color: var(--accent-a); text-decoration: none; }
+
+  /* ---------- Section headings ---------- */
+
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid var(--line); }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0 0 30px;
+  }
+
+  /* ---------- Work entries (tilt + glow cards) ---------- */
+
+  .work-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .entry {
+    position: relative;
+    padding: 26px 24px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, border-color 0.25s ease;
+    overflow: hidden;
+  }
+  .entry::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(103,232,249,0.10), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .entry:hover { border-color: rgba(103,232,249,0.35); }
+  .entry:hover::before { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    .entry { transform: none !important; }
+  }
+
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .entry-title { font-size: 1.12rem; font-weight: 600; margin: 0; color: var(--text); }
+  .entry-dates { font-size: 0.86rem; color: var(--text-soft); white-space: nowrap; }
+  .entry p.desc { margin: 10px 0 14px; color: var(--text-soft); max-width: 62ch; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    background: rgba(236,238,240,0.06);
+    color: var(--text-soft);
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  .entry-links { display: flex; gap: 18px; font-size: 0.92rem; font-weight: 500; }
+
+  /* ---------- Experience timeline ---------- */
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--line);
+  }
+  .tl-item { position: relative; padding-bottom: 30px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 5px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent-a);
+    transition: box-shadow 0.25s ease;
+  }
+  .tl-item:hover::before { box-shadow: 0 0 0 5px rgba(103,232,249,0.15); }
+  .tl-org { font-weight: 600; margin: 0 0 2px; }
+  .tl-dates { font-size: 0.86rem; color: var(--text-soft); margin: 0 0 8px; }
+  .tl-item p.detail { margin: 0; max-width: 58ch; color: var(--text-soft); }
+
+  /* ---------- Skills ---------- */
+
+  .skill-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
+  @media (max-width: 560px) { .skill-groups { grid-template-columns: 1fr; } }
+  .skill-group h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); margin: 0 0 10px; }
+  .skill-group .tags { margin-bottom: 0; }
+  .skill-group .tag { transition: border-color 0.2s ease, color 0.2s ease; }
+  .skill-group .tag:hover { border-color: var(--accent-b); color: var(--text); }
+
+  /* ---------- Contact / Footer ---------- */
+
+  footer { padding: 56px 0 80px; }
+  footer h2.section-title { margin-bottom: 16px; }
+  footer p.lead { color: var(--text-soft); max-width: 50ch; margin: 0 0 26px; }
+  .contact-list { display: flex; flex-direction: column; gap: 10px; font-size: 1.02rem; }
+  .contact-list a { font-weight: 500; }
+  .copyright { margin-top: 48px; font-size: 0.86rem; color: var(--text-soft); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="wrap hero-inner">
+    <div class="name-row hero-reveal">
+      <div class="monogram">AK</div>
+      <h1>Aravind Kattepur</h1>
+    </div>
+    <p class="role hero-reveal" id="roleText"><span class="caret"></span></p>
+    <div class="hero-reveal">
+      <span class="status-line"><span class="status-dot"></span>Open to full-time Software Engineering roles starting Summer 2027</span>
+    </div>
+  </div>
+</header>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<div class="wrap">
+
+  <nav class="subnav">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="work">
+    <h2 class="section-title">Selected work</h2>
+    <div class="work-list">
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Security Posture Forecast Platform</h3>
+        <span class="entry-dates">Jan – Apr 2026</span>
+      </div>
+      <p class="desc">A continuous security scanning platform that forecasts risk trends rather than just reporting a snapshot. Containerized SAST and API penetration testing run on a schedule, with results feeding a React dashboard so a team can see posture changing over time instead of finding out at the next audit.</p>
+      <div class="tags">
+        <span class="tag">AWS Lambda</span>
+        <span class="tag">ECS Fargate</span>
+        <span class="tag">Terraform</span>
+        <span class="tag">DynamoDB</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">React</span>
+      </div>
+      <div class="entry-links">
+        <a href="https://github.com/HarshitSatish/Security-Posture-Forecast-Platform">View repository</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">DBMS Trading Platform</h3>
+        <span class="entry-dates">Sep – Dec 2025</span>
+      </div>
+      <p class="desc">A full-stack simulated trading platform where the interesting problem was underneath the UI: a normalized MySQL schema with triggers and stored procedures handling trade execution, holdings, and funding consistently, exposed through a FastAPI backend to a React frontend for live portfolio tracking.</p>
+      <div class="tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">React</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">REST APIs</span>
+      </div>
+      <div class="entry-links">
+        <a href="https://github.com/AravindSK31/dbms-trading-platform">View repository</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Angular Migration Automation Tool</h3>
+        <span class="entry-dates">Feb – May 2025 · ABB India Ltd.</span>
+      </div>
+      <p class="desc">An automation tool that migrated Angular components to a new version by scraping the official migration docs into a lookup dictionary, then running variation-specific scripts against components too inconsistent for one generic pass — packaged into a single executable for the team to run. Cut migration time by over 70%, while routing components too complex or risky to automate back to manual review.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">BeautifulSoup</span>
+        <span class="tag">Regex</span>
+        <span class="tag">Angular</span>
+      </div>
+      <div class="entry-links">
+        <a href="#contact">Read the full write-up</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">WanderWise</h3>
+        <span class="entry-dates">Dec 2024 – Feb 2025</span>
+      </div>
+      <p class="desc">An AI travel planning platform built with a small team, generating personalized itineraries from real-time scraped data and a recommendation model, with interactive route mapping across multiple travel modes.</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Selenium</span>
+        <span class="tag">Gemini</span>
+      </div>
+      <div class="entry-links">
+        <a href="https://github.com/WanderWise-Co/WanderWise">View repository</a>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <p class="tl-org">ABB India Ltd.</p>
+        <p class="tl-dates">Feb – May 2025 · Intern, Asset Performance Management</p>
+        <p class="detail">Built the Angular migration automation tool above, plus a globalization utility that refactored code to updated i18n standards for more consistent localization.</p>
+      </div>
+
+      <div class="tl-item">
+        <p class="tl-org">Nokia Solutions and Networks</p>
+        <p class="tl-dates">Jun – Dec 2024 · Project Intern</p>
+        <p class="detail">Automated the merging of technical documents across teams while preserving track changes and version history, removing a manual, error-prone step from the review process.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Web</h3>
+        <div class="tags">
+          <span class="tag">React</span>
+          <span class="tag">Angular</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">FastAPI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; infra</h3>
+        <div class="tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Data</h3>
+        <div class="tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="section-title">Get in touch</h2>
+    <p class="lead">Looking for full-time Software Engineering, cloud, or data roles starting Summer 2027.</p>
+    <div class="contact-list">
+      <a href="mailto:aravind.shyamkrishna@gmail.com">aravind.shyamkrishna@gmail.com</a>
+      <a href="https://github.com/AravindSK31">github.com/AravindSK31</a>
+    </div>
+    <p class="copyright">Boston, MA</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Hero node-network canvas ---------- */
+  var canvas = document.getElementById('hero-canvas');
+  var ctx = canvas.getContext('2d');
+  var hero = document.querySelector('header.hero');
+  var W, H, nodes = [];
+  var NODE_COUNT = 46;
+
+  function resize() {
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  function initNodes() {
+    nodes = [];
+    for (var i = 0; i < NODE_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18
+      });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (!reduceMotion) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+      }
+      for (var j = i + 1; j < nodes.length; j++) {
+        var m = nodes[j];
+        var dx = n.x - m.x, dy = n.y - m.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          ctx.strokeStyle = 'rgba(103,232,249,' + (0.14 * (1 - dist / 130)) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for (var k = 0; k < nodes.length; k++) {
+      ctx.fillStyle = 'rgba(167,139,250,0.55)';
+      ctx.beginPath();
+      ctx.arc(nodes[k].x, nodes[k].y, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    if (!reduceMotion) requestAnimationFrame(draw);
+  }
+  resize();
+  initNodes();
+  draw();
+  window.addEventListener('resize', function () { resize(); initNodes(); if (reduceMotion) draw(); });
+
+  /* ---------- Typewriter role line ---------- */
+  var roleFull = "Software engineer working across cloud infrastructure, full-stack development, and data systems. MS Data Science candidate at Northeastern University, graduating April 2027.";
+  var roleEl = document.getElementById('roleText');
+  var caretEl = roleEl.querySelector('.caret');
+  if (reduceMotion) {
+    roleEl.textContent = roleFull;
+  } else {
+    var i = 0;
+    var textNode = document.createTextNode('');
+    roleEl.insertBefore(textNode, caretEl);
+    (function type() {
+      if (i <= roleFull.length) {
+        textNode.textContent = roleFull.slice(0, i);
+        i += 2;
+        setTimeout(type, 8);
+      }
+    })();
+  }
+
+  /* ---------- Ambient tech ticker ---------- */
+  var techList = ["Python","TypeScript","React","AWS","Terraform","FastAPI","Docker","PySpark","MySQL","Angular","Node.js","GitHub Actions"];
+  var track = document.getElementById('tickerTrack');
+  var doubled = techList.concat(techList).concat(techList).concat(techList);
+  track.innerHTML = doubled.map(function (t) { return '<span>' + t + '</span>'; }).join('');
+
+  /* ---------- Tilt / glow project cards ---------- */
+  if (!reduceMotion) {
+    document.querySelectorAll('.entry').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = e.clientX - r.left, py = e.clientY - r.top;
+        card.style.setProperty('--mx', px + 'px');
+        card.style.setProperty('--my', py + 'px');
+        var rx = ((py / r.height) - 0.5) * -4;
+        var ry = ((px / r.width) - 0.5) * 4;
+        card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = 'perspective(600px) rotateX(0) rotateY(0)';
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
