@@ -220,7 +220,57 @@
     margin: 0 0 30px;
   }
 
-  /* ---------- Work entries (tilt + glow cards) ---------- */
+  /* ---------- Experience timeline ---------- */
+
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--line);
+  }
+  .tl-item { position: relative; padding-bottom: 34px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 5px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent-a);
+    transition: box-shadow 0.25s ease;
+  }
+  .tl-item:hover::before { box-shadow: 0 0 0 5px rgba(103,232,249,0.15); }
+  .tl-org { font-weight: 600; font-size: 1.05rem; margin: 0 0 2px; }
+  .tl-role { font-weight: 500; color: var(--accent-a); margin: 0 0 4px; font-size: 0.95rem; }
+  .tl-dates { font-size: 0.84rem; color: var(--text-soft); margin: 0 0 12px; }
+  .tl-bullets { margin: 0; padding-left: 20px; max-width: 60ch; }
+  .tl-bullets li { color: var(--text-soft); margin-bottom: 6px; }
+  .tl-bullets li:last-child { margin-bottom: 0; }
+
+  /* ---------- Skills ---------- */
+
+  .skill-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 32px; }
+  @media (max-width: 560px) { .skill-groups { grid-template-columns: 1fr; } }
+  .skill-group h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); margin: 0 0 10px; }
+  .skill-group .tags { margin-bottom: 0; }
+  .skill-group .tag { transition: border-color 0.2s ease, color 0.2s ease; }
+  .skill-group .tag:hover { border-color: var(--accent-b); color: var(--text); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    background: rgba(236,238,240,0.06);
+    color: var(--text-soft);
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  /* ---------- Project entries (tilt + glow cards) ---------- */
 
   .work-list { display: flex; flex-direction: column; gap: 16px; }
 
@@ -254,54 +304,7 @@
   .entry-dates { font-size: 0.86rem; color: var(--text-soft); white-space: nowrap; }
   .entry p.desc { margin: 10px 0 14px; color: var(--text-soft); max-width: 62ch; }
 
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    background: rgba(236,238,240,0.06);
-    color: var(--text-soft);
-    padding: 3px 9px;
-    border-radius: 4px;
-    border: 1px solid var(--line);
-  }
-
   .entry-links { display: flex; gap: 18px; font-size: 0.92rem; font-weight: 500; }
-
-  /* ---------- Experience timeline ---------- */
-
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 5px; top: 6px; bottom: 6px;
-    width: 1px;
-    background: var(--line);
-  }
-  .tl-item { position: relative; padding-bottom: 30px; }
-  .tl-item:last-child { padding-bottom: 0; }
-  .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -28px; top: 5px;
-    width: 11px; height: 11px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--accent-a);
-    transition: box-shadow 0.25s ease;
-  }
-  .tl-item:hover::before { box-shadow: 0 0 0 5px rgba(103,232,249,0.15); }
-  .tl-org { font-weight: 600; margin: 0 0 2px; }
-  .tl-dates { font-size: 0.86rem; color: var(--text-soft); margin: 0 0 8px; }
-  .tl-item p.detail { margin: 0; max-width: 58ch; color: var(--text-soft); }
-
-  /* ---------- Skills ---------- */
-
-  .skill-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 32px; }
-  @media (max-width: 560px) { .skill-groups { grid-template-columns: 1fr; } }
-  .skill-group h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); margin: 0 0 10px; }
-  .skill-group .tags { margin-bottom: 0; }
-  .skill-group .tag { transition: border-color 0.2s ease, color 0.2s ease; }
-  .skill-group .tag:hover { border-color: var(--accent-b); color: var(--text); }
 
   /* ---------- Contact / Footer ---------- */
 
@@ -325,7 +328,7 @@
     </div>
     <p class="role hero-reveal" id="roleText"><span class="caret"></span></p>
     <div class="hero-reveal">
-      <span class="status-line"><span class="status-dot"></span>Open to full-time Software Engineering roles starting Summer 2027</span>
+      <span class="status-line"><span class="status-dot"></span>Open to internships &amp; full-time Software Engineering roles</span>
     </div>
   </div>
 </header>
@@ -337,14 +340,124 @@
 <div class="wrap">
 
   <nav class="subnav">
-    <a href="#work">Work</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <section id="work">
-    <h2 class="section-title">Selected work</h2>
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <p class="tl-org">ABB India Ltd.</p>
+        <p class="tl-role">Intern, Asset Performance Management (APM)</p>
+        <p class="tl-dates">Feb – May 2025 · Bengaluru, India</p>
+        <ul class="tl-bullets">
+          <li>Developed an Angular migration automation tool enabling full or partial component upgrades, reducing migration time by over 70%.</li>
+          <li>Built a syntax-mapping dictionary by scraping Angular's official migration and API documentation, used to drive automated code rewrites.</li>
+          <li>Wrote variation-specific Python scripts using regex and BeautifulSoup to safely handle components too inconsistent for a single generic migration pass, then packaged them into a single executable tool for the team.</li>
+          <li>Created a globalization automation utility to refactor Angular code for updated i18n standards, improving localization consistency across the codebase.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <p class="tl-org">Nokia Solutions and Networks</p>
+        <p class="tl-role">Project Intern</p>
+        <p class="tl-dates">Jun – Dec 2024 · Bengaluru, India</p>
+        <ul class="tl-bullets">
+          <li>Automated the merging of multiple technical documents while preserving track changes and version control.</li>
+          <li>Replaced a manual, error-prone document-reconciliation process with an automated pipeline, reducing review time across teams.</li>
+          <li>Collaborated with cross-functional engineering teams to identify document-workflow bottlenecks and improve process reliability.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Frameworks &amp; Libraries</h3>
+        <div class="tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Angular</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express.js</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; DevOps</h3>
+        <div class="tags">
+          <span class="tag">AWS</span>
+          <span class="tag">AWS Lambda</span>
+          <span class="tag">Amazon ECS</span>
+          <span class="tag">Amazon ECR</span>
+          <span class="tag">EventBridge</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">Amazon S3</span>
+          <span class="tag">CloudWatch</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">Infrastructure as Code</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Data &amp; Machine Learning</h3>
+        <div class="tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">PySpark</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Data Analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Databases</h3>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Relational Databases</span>
+          <span class="tag">Database Design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Practices</h3>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">Version Control</span>
+          <span class="tag">Selenium</span>
+          <span class="tag">Web Scraping</span>
+          <span class="tag">API Testing</span>
+          <span class="tag">SAST</span>
+          <span class="tag">Software Testing</span>
+          <span class="tag">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
     <div class="work-list">
 
     <div class="entry">
@@ -421,71 +534,9 @@
     </div>
   </section>
 
-  <section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <p class="tl-org">ABB India Ltd.</p>
-        <p class="tl-dates">Feb – May 2025 · Intern, Asset Performance Management</p>
-        <p class="detail">Built the Angular migration automation tool above, plus a globalization utility that refactored code to updated i18n standards for more consistent localization.</p>
-      </div>
-
-      <div class="tl-item">
-        <p class="tl-org">Nokia Solutions and Networks</p>
-        <p class="tl-dates">Jun – Dec 2024 · Project Intern</p>
-        <p class="detail">Automated the merging of technical documents across teams while preserving track changes and version history, removing a manual, error-prone step from the review process.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skill-groups">
-      <div class="skill-group">
-        <h3>Languages</h3>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">SQL</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">C++</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Web</h3>
-        <div class="tags">
-          <span class="tag">React</span>
-          <span class="tag">Angular</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">FastAPI</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Cloud &amp; infra</h3>
-        <div class="tags">
-          <span class="tag">AWS</span>
-          <span class="tag">Terraform</span>
-          <span class="tag">Docker</span>
-          <span class="tag">GitHub Actions</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Data</h3>
-        <div class="tags">
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">PySpark</span>
-          <span class="tag">MySQL</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer id="contact">
     <h2 class="section-title">Get in touch</h2>
-    <p class="lead">Looking for full-time Software Engineering, cloud, or data roles starting Summer 2027.</p>
+    <p class="lead">Looking for internship and full-time Software Engineering, cloud, or data roles.</p>
     <div class="contact-list">
       <a href="mailto:aravind.shyamkrishna@gmail.com">aravind.shyamkrishna@gmail.com</a>
       <a href="https://github.com/AravindSK31">github.com/AravindSK31</a>
